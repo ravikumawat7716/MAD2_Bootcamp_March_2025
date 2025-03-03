@@ -1,6 +1,9 @@
-from flask import Flask
+from instance.app import app
+from application import config
+from utils.configuration import create_app
+import api
 
-app = Flask(__name__)
+create_app()
 
 @app.route('/')
 def home():
