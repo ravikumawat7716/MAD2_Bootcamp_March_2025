@@ -4,14 +4,14 @@
             <h1>Login</h1>
         </div>
         <div class="login-components">
-            <form>
+            <form @submit.prevent="login">
                 <div>
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" v-model="email" id="email" name="email" required>
                 </div>
                 <div>
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
+                    <input type="password" v-model="password" id="password" name="password" required>
                 </div>
                 <div>
                     <button type="submit">Login</button>
@@ -21,11 +21,49 @@
     </div>
 </template>
 
+
+
 <script>
+import axios from 'axios';
 export default {
   name: 'LoginPage',
+    data() {
+        return {
+        email: '',
+        password: ''
+        }
+
+    },
+    methods: {
+        async login() {
+            if (this.email && this.password) {
+                console.log(this.email, this.password);
+            try {
+                const response = await axios.post('http://localhost:5000/login', {
+                    email: this.email,
+                    password: this.password
+                });
+                console.log(response.data);
+                // token = JSON.stringify(response.data.token);
+                // console.log(token);
+                localStorage.setItem('token', "token123");
+            } catch (error) {
+                console.error(error);
+            }
+        }
+    }
+    }
+
 }
+
+
 </script>
+
+
+
+
+
+
 
 <style>
     #login-container {
