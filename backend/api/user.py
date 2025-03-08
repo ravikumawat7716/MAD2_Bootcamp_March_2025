@@ -12,7 +12,7 @@ class UserAPI(Resource):
         print("============================")
         print(current_user)
         print("============================")
-        return {"message": f"GET Function of User API Triggered for {current_user}"}
+        return {"username" : 'rahul', "email" : current_user}
     
 api.add_resource(UserAPI, '/user')
     

@@ -44,15 +44,29 @@ export default {
                     password: this.password
                 });
                 console.log(response.data);
-                // token = JSON.stringify(response.data.token);
+                const token = response.data.token;
+                const role = response.data.role;
                 // console.log(token);
-                localStorage.setItem('token', "token123");
+                localStorage.setItem('token', token);
+                localStorage.setItem('role', role);
+                if (role === 'admin') {
+                    this.$router.push('/admindashboard');
+                } else {
+                    this.$router.push('/userdashboard');
+                }
             } catch (error) {
                 console.error(error);
+                alert
             }
         }
     }
-    }
+    },
+    mounted() {
+        const token = localStorage.getItem('token');
+        if (token) {
+            this.$router.push('/userdashboard');
+        }
+    },
 
 }
 

@@ -16,10 +16,11 @@ class LoginAPI(Resource):
         email = data.get('email')
         password = data.get('password')
         
+        
         if email == "rahul@test.com" and password == "admin":
             access_token = create_access_token(identity=email)
             return {"message": "Login Successful", 
-                    "token" : access_token} , 200
+                    "token" : access_token, "role" : "user"} , 200
         return {"message": "Wrong Credentials"} , 401
     
 

@@ -1,7 +1,10 @@
 <template>
-  <h1>Hello World</h1>
-  <p>This is coming from HelloWorld.vue</p>
+    <h1>Hello World</h1>
+    <p>This is coming from HelloWorld.vue</p>
+
+
 </template>
+
 
 <script>
 export default {
@@ -11,4 +14,6 @@ export default {
 </script>
 
 <style>
+
+
 </style>
